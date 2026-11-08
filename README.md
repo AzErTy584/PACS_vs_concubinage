@@ -10,15 +10,13 @@
 
 ## Résultats principaux
 
-Sur une grille de revenus de 0 à 200 000 € par partenaire (pas de 2 000 €) :
+Sur une grille de revenus de 0 à 200 000 € par partenaire :
 
 - **Revenus égaux : aucun gain.** Sur la diagonale (revenu 1 = revenu 2), le PACS ne fait jamais économiser d'impôt, car le quotient conjugal ne lisse rien quand les deux revenus sont identiques.
 - **Le gain vient de l'écart de revenus.** Plus l'écart est grand, plus le quotient conjugal profite au couple pacsé (jusqu'à plusieurs milliers d'euros par an).
-- **Une zone où le PACS coûte plus cher** : lorsque les deux partenaires ont chacun un revenu d'environ 20 000 à 32 000 €, le couple pacsé paie **jusqu'à 311 € de plus** que s'il restait en concubinage.
+- **Une zone où le PACS coûte plus cher** : lorsque les deux partenaires ont chacun un revenu d'environ 20 000 à 30 000 €, le couple pacsé paie **jusqu'à 311 € de plus** que s'il restait en concubinage.
 - **Cause : la décote.** Deux concubins bénéficient de deux forfaits individuels (2 × 897 € = 1 794 €), un couple pacsé d'un seul forfait couple (1 483 €), soit 311 € d'écart.
-- Exemple chiffré : 31 200 € / 18 000 € de revenus annuels donnent **149 € de surcoût** pour le couple pacsé.
-
-> Ces chiffres sont à mettre à jour avec ta propre exécution du code final (voir *Reproductibilité*).
+- Exemple chiffré : 31 000 € / 18 000 € de revenus annuels donnent **149 € de surcoût** pour le couple pacsé.
 
 ---
 
