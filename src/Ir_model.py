@@ -2,10 +2,16 @@ import numpy as np
 
 def calculate_tax(revenue, tax_individual=True, quotient_familial=1):
     # Abattement de 10% sur le revenu imposable
-    if revenue * 0.1 > 14555 :
-        abbatement = 14555
-    elif revenue * 0.1 < 509 :
-        abbatement = 509
+
+    if tax_individual:
+        coef_abbatement = 1
+    else:
+        coef_abbatement = 2
+
+    if revenue * 0.1 > 14555*coef_abbatement:
+        abbatement = 14555*coef_abbatement
+    elif revenue * 0.1 < 509*coef_abbatement :
+        abbatement = 509*coef_abbatement
     else:
         abbatement = revenue * 0.1
 
@@ -30,11 +36,7 @@ def calculate_tax(revenue, tax_individual=True, quotient_familial=1):
     if quotient_familial != 1:
             tax = tax * quotient_familial
 
-    if tax_individual:
-        decote_forfait = 897
-    else :
-        decote_forfait = 1483
-
+    decote_forfait = 897 if tax_individual else 1483
     decote = max(decote_forfait - tax * 0.4525, 0)
     # print(f"Decote forfait: {decote_forfait}")
     # print(f"Taxe avant decote: {tax}")
@@ -55,7 +57,12 @@ def calculate_tax_vectorized(revenue_array, tax_individual=True, quotient_famili
     tax = np.zeros_like(revenue_array)
 
     # Abattement de 10 % borné entre 509 et 14 555, sans dépasser le revenu
-    abattement = np.clip(revenue_array * 0.10, 509, 14555)
+    if tax_individual:
+        coef_abbatement = 1
+    else:
+        coef_abbatement = 2
+
+    abattement = np.clip(revenue_array * 0.10, 509*coef_abbatement, 14555*coef_abbatement)
     abattement = np.minimum(abattement, revenue_array)
     revenue_array = revenue_array - abattement
 
@@ -91,3 +98,12 @@ def calculate_tax_vectorized(revenue_array, tax_individual=True, quotient_famili
     tax = np.maximum(tax - decote, 0)
 
     return tax
+
+revenu_1 = 300000
+revenu_2 = 70000
+
+concubinage = calculate_tax(revenu_1) + calculate_tax(revenu_2)
+pacse = calculate_tax(revenu_1 + revenu_2, tax_individual=False, quotient_familial=2)
+
+print(f"Impôt pour concubinage : {concubinage}")
+print(f"Impôt pour PACS : {pacse}")
