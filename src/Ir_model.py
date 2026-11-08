@@ -98,12 +98,3 @@ def calculate_tax_vectorized(revenue_array, tax_individual=True, quotient_famili
     tax = np.maximum(tax - decote, 0)
 
     return tax
-
-revenu_1 = 300000
-revenu_2 = 70000
-
-concubinage = calculate_tax(revenu_1) + calculate_tax(revenu_2)
-pacse = calculate_tax(revenu_1 + revenu_2, tax_individual=False, quotient_familial=2)
-
-print(f"Impôt pour concubinage : {concubinage}")
-print(f"Impôt pour PACS : {pacse}")
